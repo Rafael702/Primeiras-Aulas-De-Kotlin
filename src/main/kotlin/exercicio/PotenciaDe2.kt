@@ -1,4 +1,9 @@
 package src.exercicio
+/*
+
+
+
+ */
 
 fun validarNumerosQueSaoOuNaoPotenciasDeDois(numeroLimite: Long) {
     var expoenteFinal: Int = 0
@@ -34,7 +39,7 @@ fun imprimirNumerosQueNaoSaoPotenciasDeDois(numeroLimite: Long) {
 
 fun main() {
 
-    var listaDeNumeros = listOf(1,4,8,9, 140, 128, 137, 65535, 65536, 17179869184)
+    var listaDeNumeros = listOf(1, 4, 8, 9, 140, 128, 137, 65535, 65536, 17179869184)
 
     listaDeNumeros.forEach { numeroDaLista ->
         validarNumerosQueSaoOuNaoPotenciasDeDois(numeroDaLista)
