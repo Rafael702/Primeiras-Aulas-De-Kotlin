@@ -12,7 +12,6 @@ fun validarNumerosQueSaoOuNaoPotenciasDeDois(numeroLimite: Long) {
             break
         } else if (i == numeroLimite) {
             imprimirNumerosQueNaoSaoPotenciasDeDois(numeroLimite)
-            break
         }
         expoenteFinal += 1
     }
