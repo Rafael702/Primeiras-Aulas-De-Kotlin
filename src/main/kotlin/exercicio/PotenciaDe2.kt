@@ -36,7 +36,7 @@ fun main() {
 
     var listaDeNumeros = listOf(1, 140, 128, 137, 65535, 65536, 17179869184)
 
-    for (numeroDaLista in listaDeNumeros) {
+    listaDeNumeros.forEach { numeroDaLista ->
         validarNumerosQueSaoOuNaoPotenciasDeDois(numeroDaLista)
     }
 
