@@ -1,9 +1,18 @@
 package src.exercicio
 
+fun listarPalavrasParaAnagrama(): Array<String> {
+    return arrayOf(
+        "A", "AARHUS", "AARON", "ABABA", "ABACK", "ABACUS", "ABALONE", "ABANDON", "ABASE", "ABASH", "ABATE", "ABATER",
+        "ABBAS", "ABBE", "ABBEY", "ABBOT", "ABBOTT", "BAA", "BABBITT","BABBLE", "BABCOCK", "BABE", "BABEL", "BABOON",
+        "BABY", "BABYHOOD", "BABYLON", "BABYLONIAN", "ELM", "HO", "REV","OH", "REV", "OHM", "REVEL", "LEVER ", "HOVER",
+        "HOLM", "VEER", "HELM", "OVER", "ROVE", "GO", "TEEN", "I","GENE","TO","GET","ONE","EON","ENG","TOE","TON","GEE",
+        "NOT","NET","EGO","TEN","NO","IT","ON","IN","GENIE","GONE","TIE","OINT","INTO","TONI","GINO","TEE","ITO","GENE",
+        "TINE","ROMA", "SAL", "COBRA", "BROCA")
+}
 
 fun buscarAnagrama(palavra: String): String {
 
-    val listaDePalavras: Array<String> = arrayOf("ROMA", "SAL", "COBRA", "BROCA")
+    val listaDePalavras: Array<String> = listarPalavrasParaAnagrama()
 
     palavra.forEach { i ->
         val anagrama: String = verificarPalavraNaListaDeAnagrama(listaDePalavras, i, palavra)
@@ -61,7 +70,7 @@ fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>):
 
 fun main() {
 
-    val palavra = "Barco"
+    val palavra = "oi gente"
 
     println(buscarAnagrama(palavra.uppercase()))
 
