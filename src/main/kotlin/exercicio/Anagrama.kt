@@ -16,18 +16,23 @@ fun buscarAnagrama(palavra: String): String {
     return "Nao Foi Encontrado Anagrama Para Esta Palavra"
 }
 
-fun verificarPalavraNaListaDeAnagrama(listaDePalavras: Array<String>, caracterDePalavra: Char, palavra: String): String {
-    val anagramaFormado: String = ""
+fun verificarPalavraNaListaDeAnagrama(
+    listaDePalavras: Array<String>,
+    caracterDePalavra: Char,
+    palavra: String
+): String {
+    var anagramaFormado: String = ""
 
     listaDePalavras.forEach { anagrama ->
-        val anagramaComValidacao = validarAnagrama(anagrama, caracterDePalavra, palavra, anagramaFormado)
+        val anagramaASerPreenchido: String = ""
+        val anagramaComValidacao = validarAnagrama(anagrama, caracterDePalavra, palavra, anagramaASerPreenchido)
         when {
             anagramaComValidacao.isNotEmpty() -> {
-                return anagramaComValidacao
+                anagramaFormado += anagramaComValidacao
             }
         }
     }
-    return ""
+    return anagramaFormado
 }
 
 fun validarAnagrama(anagrama: String, caracterDePalavra: Char, palavra: String, anagramaFormado: String): String {
@@ -49,7 +54,7 @@ fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>):
     var anagramasDaLista: String = ""
 
     listaComAnagramasDaPalavra.forEach { anagramas ->
-        anagramasDaLista += "$anagramas \n"
+        anagramasDaLista += "\n$anagramas"
     }
     return anagramasDaLista
 }
