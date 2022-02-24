@@ -1,13 +1,18 @@
 package src.exercicio
 
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+
 fun listarPalavrasParaAnagrama(): Array<String> {
-    return arrayOf(
-        "A", "AARHUS", "AARON", "ABABA", "ABACK", "ABACUS", "ABALONE", "ABANDON", "ABASE", "ABASH", "ABATE", "ABATER",
-        "ABBAS", "ABBE", "ABBEY", "ABBOT", "ABBOTT", "BAA", "BABBITT","BABBLE", "BABCOCK", "BABE", "BABEL", "BABOON",
-        "BABY", "BABYHOOD", "BABYLON", "BABYLONIAN", "ELM", "HO", "REV","OH", "REV", "OHM", "REVEL", "LEVER ", "HOVER",
-        "HOLM", "VEER", "HELM", "OVER", "ROVE", "GO", "TEEN", "I","GENE","TO","GET","ONE","EON","ENG","TOE","TON","GEE",
-        "NOT","NET","EGO","TEN","NO","IT","ON","IN","GENIE","GONE","TIE","OINT","INTO","TONI","GINO","TEE","ITO","GENE",
-        "TINE","ROMA", "SAL", "COBRA", "BROCA")
+    val path: Path = Paths.get(
+        "C:\\Users\\rafael.almeida\\Desktop\\Aulas - ZUP\\Aulas\\Aulas-Kotlin\\src\\main\\kotlin\\exercicio",
+        "text.txt"
+    )
+
+    val listaDePalavras: Array<String> = Files.readAllLines(path).toTypedArray()
+
+    return listaDePalavras
 }
 
 fun buscarAnagrama(palavra: String): String {
