@@ -1,24 +1,12 @@
 package src.exercicio
 
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
+import src.exercicio.anagrama.ServicePalavra
 
 class Anagrama {
-    fun listarPalavrasParaAnagrama(): Array<String> {
-        val path: Path = Paths.get(
-            "C:\\Users\\rafael.almeida\\Desktop\\Aulas - ZUP\\Aulas\\Aulas-Kotlin\\src\\main\\kotlin\\exercicio",
-            "text.txt"
-        )
-
-        val listaDePalavras: Array<String> = Files.readAllLines(path).toTypedArray()
-
-        return listaDePalavras
-    }
 
     fun buscarAnagrama(palavra: String): String {
 
-        val listaDePalavras: Array<String> = listarPalavrasParaAnagrama()
+        val listaDePalavras: Array<String> = ServicePalavra().listarPalavrasParaAnagrama()
 
         palavra.forEach { i ->
             val anagrama: String = verificarPalavraNaListaDeAnagrama(listaDePalavras, i, palavra)
