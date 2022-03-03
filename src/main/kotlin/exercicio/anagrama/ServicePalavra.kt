@@ -15,4 +15,7 @@ class ServicePalavra {
 
         return listaDePalavras
     }
+
+    fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>) =
+        listaComAnagramasDaPalavra.joinToString { "\n$it" }
 }
