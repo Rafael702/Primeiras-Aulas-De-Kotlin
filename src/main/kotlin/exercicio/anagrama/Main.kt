@@ -10,6 +10,6 @@ fun main() {
     println("Para começarmos, digite uma palavra e lhe apresentaremos os anagrama:")
     val palavra = readLine() ?: "ola mundo"
     print(
-        Anagrama().buscarAnagrama(palavra.uppercase())
+        Anagrama().buscarAnagrama(palavra)
     )
 }
