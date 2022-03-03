@@ -1,18 +1,22 @@
 package src.exercicio
 
-import src.exercicio.anagrama.ServicePalavra
+import src.exercicio.anagrama.ServiceAnagrama
+import src.exercicio.anagrama.ValidaAnagrama
 
 class Anagrama {
 
     fun buscarAnagrama(palavra: String): String {
 
-        val listaDePalavras: Array<String> = ServicePalavra().listarPalavrasParaAnagrama()
+        val listaDePalavras: Array<String> = ServiceAnagrama().listarPalavrasParaAnagrama()
+        val palavraComLetrasMaiuscula = palavra.uppercase()
 
-        palavra.forEach { i ->
-            val anagrama: String = verificarPalavraNaListaDeAnagrama(listaDePalavras, i, palavra)
+        palavraComLetrasMaiuscula.forEach { i ->
+            val anagrama: String = verificarPalavraNaListaDeAnagrama(
+                listaDePalavras, i, palavraComLetrasMaiuscula.uppercase()
+            )
             val temAnagrama: Boolean = anagrama.isNotEmpty()
             if (temAnagrama) {
-                return "O Anagrama de $palavra É: $anagrama"
+                return "O Anagrama de ${palavra.uppercase()} É: $anagrama"
             }
         }
 
@@ -28,7 +32,10 @@ class Anagrama {
 
         listaDePalavras.forEach { anagrama ->
             val anagramaASerPreenchido: String = ""
-            val anagramaComValidacao = validarAnagrama(anagrama, caracterDePalavra, palavra, anagramaASerPreenchido)
+            val anagramaComValidacao = ValidaAnagrama().validarAnagrama(
+                anagrama, caracterDePalavra, palavra,
+                anagramaASerPreenchido
+            )
             when {
                 anagramaComValidacao.isNotEmpty() -> {
                     anagramaFormado += anagramaComValidacao
@@ -38,28 +45,11 @@ class Anagrama {
         return anagramaFormado
     }
 
-    fun validarAnagrama(anagrama: String, caracterDePalavra: Char, palavra: String, anagramaFormado: String): String {
-        val listaComAnagramasDaPalavra: ArrayList<String> = arrayListOf()
+    /*
+    Core
+          Servico {Orquestrador}
+          Validadores {Cadastro de cliente = ValidarOCEP, validar Pessoa.validador}
+          repositorio
 
-        var anagramaValidado = anagramaFormado
-
-        anagrama.forEach { a ->
-            if (anagrama.contains(caracterDePalavra)) if (palavra.contains(a)) {
-                anagramaValidado += a
-                if (anagramaValidado == anagrama) if (anagramaValidado != palavra)
-                    listaComAnagramasDaPalavra.add(anagramaValidado)
-            }
-        }
-        return apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra)
-    }
-
-    fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>): String {
-        var anagramasDaLista: String = ""
-
-        listaComAnagramasDaPalavra.forEach { anagramas ->
-            anagramasDaLista += "\n$anagramas"
-        }
-        return anagramasDaLista
-    }
+     */
 }
-
