@@ -1,17 +1,40 @@
 package src.exercicio.anagrama
 
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
+import src.exercicio.Anagrama
 
 class ServiceAnagrama {
-    fun listarPalavrasParaAnagrama(): Array<String> {
-        val path: Path = Paths.get(
-            "C:\\Users\\rafael.almeida\\Desktop\\Aulas - ZUP\\Aulas\\Aulas-Kotlin\\src\\main\\kotlin\\exercicio",
-            "text.txt"
-        )
 
-        return Files.readAllLines(path).toTypedArray()
+    fun buscarAnagrama(palavra: String): String {
+
+        val listaDePalavras: Array<String> = Anagrama().listarPalavrasParaAnagrama()
+        val palavraComLetrasMaiuscula = palavra.uppercase()
+
+        palavraComLetrasMaiuscula.forEach {
+            val anagrama: String = verificarPalavraNaListaDeAnagrama(
+                listaDePalavras, it, palavraComLetrasMaiuscula.uppercase()
+            )
+            val temAnagrama: Boolean = anagrama.isNotEmpty()
+            if (temAnagrama) {
+                return "O Anagrama de ${palavra.uppercase()} É: $anagrama"
+            }
+        }
+
+        return "Nao Foi Encontrado Anagrama Para Esta Palavra"
+    }
+
+    fun verificarPalavraNaListaDeAnagrama(listaDePalavras: Array<String>, caracterDePalavra: Char, palavra: String):
+            String {
+
+        var anagramaFormado: String = ""
+
+        listaDePalavras.forEach {
+            val anagramaComValidacao = ValidaAnagrama().validarAnagrama(it, caracterDePalavra, palavra)
+            if (anagramaComValidacao.isNotEmpty()) {
+                anagramaFormado += anagramaComValidacao
+            }
+        }
+
+        return anagramaFormado
     }
 
     fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>) =
