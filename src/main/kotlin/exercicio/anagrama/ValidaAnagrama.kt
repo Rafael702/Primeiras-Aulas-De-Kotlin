@@ -9,13 +9,14 @@ class ValidaAnagrama {
 
         anagramaValidado += anagrama.filter { a -> anagrama.contains(caracterDePalavra) && palavra.contains(a) }
 
-        if (anagramaValidado == anagrama)
-            if (anagramaValidado != palavra) {
-                listaComAnagramasDaPalavra.add(anagramaValidado)
-            }
+        if (verificarSeAnagramaValidadoEstaNaLista(anagramaValidado, anagrama, palavra)) {
+            listaComAnagramasDaPalavra.add(anagramaValidado)
+        }
 
         return ServiceAnagrama().apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra)
     }
 
+    fun verificarSeAnagramaValidadoEstaNaLista(anagramaValidado: String, anagrama: String, palavra: String) =
+        run { anagramaValidado == anagrama && anagramaValidado != palavra }
 
 }
