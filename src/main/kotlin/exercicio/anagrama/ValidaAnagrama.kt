@@ -2,10 +2,10 @@ package src.exercicio.anagrama
 
 class ValidaAnagrama {
 
-    fun validarAnagrama(anagrama: String, caracterDePalavra: Char, palavra: String, anagramaFormado: String): String {
+    fun validarAnagrama(anagrama: String, caracterDePalavra: Char, palavra: String): String {
         val listaComAnagramasDaPalavra: ArrayList<String> = arrayListOf()
 
-        var anagramaValidado = anagramaFormado
+        var anagramaValidado = ""
 
         anagramaValidado += anagrama.filter { a -> anagrama.contains(caracterDePalavra) && palavra.contains(a) }
 
@@ -17,7 +17,7 @@ class ValidaAnagrama {
     }
 
 
-    //* Funcao Verifica se o angrama que foi validado esta de acordo com o anagrama da lista de palavras
+    /* Funcao Verifica se o anagrama que foi validado esta de acordo com o anagrama da lista de palavras */
     fun verificarSeAnagramaValidadoEstaNaLista(anagramaValidado: String, anagrama: String, palavra: String) =
         run { anagramaValidado == anagrama && anagramaValidado != palavra }
 
