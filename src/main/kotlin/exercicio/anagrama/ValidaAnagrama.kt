@@ -16,6 +16,8 @@ class ValidaAnagrama {
         return ServiceAnagrama().apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra)
     }
 
+
+    //* Funcao Verifica se o angrama que foi validado esta de acordo com o anagrama da lista de palavras
     fun verificarSeAnagramaValidadoEstaNaLista(anagramaValidado: String, anagrama: String, palavra: String) =
         run { anagramaValidado == anagrama && anagramaValidado != palavra }
 
