@@ -4,14 +4,22 @@ import src.exercicio.Anagrama
 
 class ServiceAnagrama {
 
+    fun pegarPalavraInseridaPeloUsuario(): String? {
+        println("Bem vindo ao programa de Anagramas!!!")
+        println("Para começarmos, digite uma palavra e lhe apresentaremos os anagrama:")
+        val palavra = readLine()
+
+        return palavra?.let { buscarAnagrama(it.uppercase()) }
+    }
+
     fun buscarAnagrama(palavra: String): String {
 
         val listaDePalavras: Array<String> = Anagrama().listarPalavrasParaAnagrama()
-        val palavraComLetrasMaiuscula = palavra.uppercase()
 
-        return palavraComLetrasMaiuscula.map {
-            verificarPalavraNaListaDeAnagrama(listaDePalavras, it, palavraComLetrasMaiuscula)
-        }.joinToString { it }.ifEmpty { "Nao Foi Encontrado Anagrama Para Esta Palavra" }
+        return palavra.map {
+            verificarPalavraNaListaDeAnagrama(listaDePalavras, it, palavra)
+        }.joinToString { it }
+            .ifEmpty { "Nao Foi Encontrado Anagrama Para Esta Palavra" }
 
     }
 
