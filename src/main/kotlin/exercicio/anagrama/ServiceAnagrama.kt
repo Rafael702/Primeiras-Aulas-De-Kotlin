@@ -11,9 +11,7 @@ class ServiceAnagrama {
             "text.txt"
         )
 
-        val listaDePalavras: Array<String> = Files.readAllLines(path).toTypedArray()
-
-        return listaDePalavras
+        return Files.readAllLines(path).toTypedArray()
     }
 
     fun apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra: ArrayList<String>) =
