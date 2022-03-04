@@ -9,17 +9,10 @@ class ServiceAnagrama {
         val listaDePalavras: Array<String> = Anagrama().listarPalavrasParaAnagrama()
         val palavraComLetrasMaiuscula = palavra.uppercase()
 
-        palavraComLetrasMaiuscula.forEach {
-            val anagrama: String = verificarPalavraNaListaDeAnagrama(
-                listaDePalavras, it, palavraComLetrasMaiuscula.uppercase()
-            )
-            val temAnagrama: Boolean = anagrama.isNotEmpty()
-            if (temAnagrama) {
-                return "O Anagrama de ${palavra.uppercase()} É: $anagrama"
-            }
-        }
+        return palavraComLetrasMaiuscula.map {
+            verificarPalavraNaListaDeAnagrama(listaDePalavras, it, palavraComLetrasMaiuscula)
+        }.joinToString { it }.ifEmpty { "Nao Foi Encontrado Anagrama Para Esta Palavra" }
 
-        return "Nao Foi Encontrado Anagrama Para Esta Palavra"
     }
 
     fun verificarPalavraNaListaDeAnagrama(listaDePalavras: Array<String>, caracterDePalavra: Char, palavra: String):
@@ -27,11 +20,9 @@ class ServiceAnagrama {
 
         var anagramaFormado: String = ""
 
-        listaDePalavras.forEach {
-            val anagramaComValidacao = ValidaAnagrama().validarAnagrama(it, caracterDePalavra, palavra)
-            if (anagramaComValidacao.isNotEmpty()) {
-                anagramaFormado += anagramaComValidacao
-            }
+        listaDePalavras.map {
+            if (ValidaAnagrama().validarAnagrama(it, caracterDePalavra, palavra).isNotEmpty())
+                anagramaFormado += "\n" + it
         }
 
         return anagramaFormado
