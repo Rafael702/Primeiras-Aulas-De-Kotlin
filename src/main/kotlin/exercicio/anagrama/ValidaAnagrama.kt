@@ -7,13 +7,15 @@ class ValidaAnagrama {
 
         var anagramaValidado = anagramaFormado
 
-        anagrama.forEach { a ->
-            if (anagrama.contains(caracterDePalavra)) if (palavra.contains(a)) {
-                anagramaValidado += a
-                if (anagramaValidado == anagrama) if (anagramaValidado != palavra)
-                    listaComAnagramasDaPalavra.add(anagramaValidado)
+        anagramaValidado += anagrama.filter { a -> anagrama.contains(caracterDePalavra) && palavra.contains(a) }
+
+        if (anagramaValidado == anagrama)
+            if (anagramaValidado != palavra) {
+                listaComAnagramasDaPalavra.add(anagramaValidado)
             }
-        }
+
         return ServiceAnagrama().apresentarAnagramasDaPalavra(listaComAnagramasDaPalavra)
     }
+
+
 }
